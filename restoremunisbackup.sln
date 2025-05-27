@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "restoremunisbackup", "restoremunisbackup.dtproj", "{306AC649-56CF-4BB0-B937-5A3565D3033C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{306AC649-56CF-4BB0-B937-5A3565D3033C}.Development|Default.ActiveCfg = Development
+		{306AC649-56CF-4BB0-B937-5A3565D3033C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6E73FA9-6342-4D96-8869-EDBCA4D7AD37}
+	EndGlobalSection
+EndGlobal

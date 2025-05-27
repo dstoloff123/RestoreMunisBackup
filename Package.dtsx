@@ -1,0 +1,209 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/25/2025 11:50:57 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IT-23-27094"
+  DTS:CreatorName="KISS_MAIN_HQ\dstoloff"
+  DTS:DTSID="{43AA32E2-2E4E-4AB7-8E73-D3B8BC1633DF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{655F94F9-B482-49AC-8023-4E1066B45C28}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[munprod]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{DD780CB5-A755-4142-B39A-C56444BFC8DB}"
+      DTS:ObjectName="munprod">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=gissql\gissql;Initial Catalog=aw_munis_integration;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Package-{DD780CB5-A755-4142-B39A-C56444BFC8DB}munprod;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{F2D7DA53-CA02-4A5C-A189-A3EC908FB4B4}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=mailsend.intra.kissimmee.org;UseWindowsAuthentication=False;EnableSsl=False;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\restoredb"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{97E73C14-E6F4-455C-B1A1-63B47BF38541}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="restoredb"
+      DTS:TaskContact="Execute T-SQL Statement Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DD780CB5-A755-4142-B39A-C56444BFC8DB}"
+          SQLTask:SqlStatementSource="&#xA;USE master;&#xA;GO&#xA;&#xA;ALTER DATABASE [munis_restore]&#xA;SET SINGLE_USER&#xA;WITH ROLLBACK IMMEDIATE;&#xA;GO&#xA;&#xA;RESTORE DATABASE [munis_restore]&#xA;From Disk='\\gissql\g$\mun_backup\restore\mun2849prod.bak'&#xA;&#xA;WITH REPLACE, RECOVERY,&#xA;MOVE 'mun2849prod' TO 'G:\SQL_Database\munis_restore.mdf',&#xA;MOVE 'mun2849prod_log' TO 'D:\SQL_LOGS\munis_restore.ldf';&#xA;&#xA;&#xA;&#xA;ALTER DATABASE [munis_restore] SET MULTI_USER;"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{B7FA86F3-D70C-4B5B-982A-9CC1FFEA5BA6}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{F2D7DA53-CA02-4A5C-A189-A3EC908FB4B4}"
+          SendMailTask:From="noreply@kissimmee.gov"
+          SendMailTask:To="mark.grigg@kissimmee.gov;dave.stoloff@kissimmee.gov;kevin.campbell@kissimmee.gov"
+          SendMailTask:Subject="Success - Restore Munis Backup" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task 1"
+      DTS:CreationName="Microsoft.SendMailTask"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{BF77CAE6-0EF1-4871-9C59-D779C041035D}"
+      DTS:ExecutableType="Microsoft.SendMailTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task 1"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{F2D7DA53-CA02-4A5C-A189-A3EC908FB4B4}"
+          SendMailTask:From="noreply@kissimmee.gov"
+          SendMailTask:To="dave.stoloff@kissimmee.gov;mark.grigg@kissimmee.gov;kevin.campbell@kissimmee.gov"
+          SendMailTask:Subject="Failure - Restore Munis Cloud Backup" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EB0FE22C-C483-408B-951F-3C514815AA0E}"
+      DTS:From="Package\restoredb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Mail Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{DF101DF0-1611-4EC7-BFCD-0777D3D63220}"
+      DTS:From="Package\restoredb"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Send Mail Task 1"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\restoredb"
+          TopLeft="306,270" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Send Mail Task"
+          TopLeft="849,272" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Send Mail Task 1"
+          TopLeft="407,357" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="431,292">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="418,0"
+              Start="0,0"
+              End="410.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="410.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="368.5,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.5,45"
+              Start="0,0"
+              End="120.5,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="116.5,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="116.5,22.5"
+                    Point2="120.5,22.5"
+                    Point3="120.5,26.5" />
+                  <mssgle:LineSegment
+                    End="120.5,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="45.00865234375,27.5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
