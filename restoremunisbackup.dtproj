@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">IT-23-27094</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUqTL2NlB5EqNQaGg7+xnSgAAAAACAAAAAAADZgAAwAAAABAAAABcWUigUt3nGoYgUUecNd83AAAAAASAAACgAAAAEAAAAE832ND9Q9oJkUceOGkqbsOIAAAAViY6LrH+ykszviaPAn9j5DZ0M9uWJatq8rsMbnBypAGNzde4tNTqC6K7auwAfLcWLkGfll3OIW3mHKyYJLRNjR4n5mA89A4xv4f3tuEFFPvW09kJMsr1uuI+z6qaedYj+/kn8CS63Vkvz1gBAIwfPxI5gQcYsoZhz9k2HEwRzlR1RZczXl2+DxQAAABqs4kpFqO8eU866TyTzjgkuG9Q9Q==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADr86u7h91UGPvEfuCsu57wAAAAACAAAAAAADZgAAwAAAABAAAABlA2GvlbS3WZFverrcywnBAAAAAASAAACgAAAAEAAAACK3Uxoyyd8Dr71CETnsJJOIAAAAVpY93ZeyQxfoxSiQSaEO2JEgXTjf0Ez137hbrVtzOId7tdG21RI46UPwuCH+lVqWT7QCXyLpDvD+aL0RghzWA1t01+jDKD5lJVUVV5lsmNo7S1sreuCQv557LUhEqNVXUi60CRxPelNdjkZP3h7vSNvZW0AMuNcuBLCt6xXW+UQh8isWOcqsqBQAAAA8zL+9sZXUjIEfExJBWx7yTyj7tg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">25</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">34</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{40B39E98-4C63-40DB-AFB7-7D7D96D8D667}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4F38E58F-2146-4B2B-ACB5-8B38EFBA9B49}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -78,7 +78,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=gissql\gissql;Initial Catalog=aw_munis_integration;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Package-{DD780CB5-A755-4142-B39A-C56444BFC8DB}munprod;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=devsql;Initial Catalog=munprod;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Package-{DD780CB5-A755-4142-B39A-C56444BFC8DB}munprod;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -108,7 +108,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">aw_munis_integration</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">munprod</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -152,7 +152,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">gissql\gissql</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">devsql</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -196,7 +196,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SmtpServer=mailsend.intra.kissimmee.org;UseWindowsAuthentication=False;EnableSsl=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">SmtpServer=mailsend.intra.kissimmee.org;UseWindowsAuthentication=True;EnableSsl=False;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -256,7 +256,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

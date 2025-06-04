@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{655F94F9-B482-49AC-8023-4E1066B45C28}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{4F38E58F-2146-4B2B-ACB5-8B38EFBA9B49}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="munprod">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=gissql\gissql;Initial Catalog=aw_munis_integration;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Package-{DD780CB5-A755-4142-B39A-C56444BFC8DB}munprod;" />
+          DTS:ConnectionString="Data Source=devsql;Initial Catalog=munprod;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Package-{DD780CB5-A755-4142-B39A-C56444BFC8DB}munprod;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -33,7 +33,7 @@
       DTS:ObjectName="SMTP Connection Manager">
       <DTS:ObjectData>
         <SmtpConnectionManager
-          ConnectionString="SmtpServer=mailsend.intra.kissimmee.org;UseWindowsAuthentication=False;EnableSsl=False;"
+          ConnectionString="SmtpServer=mailsend.intra.kissimmee.org;UseWindowsAuthentication=True;EnableSsl=False;"
           ConnectByProxy="False" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -54,7 +54,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DD780CB5-A755-4142-B39A-C56444BFC8DB}"
-          SQLTask:SqlStatementSource="&#xA;USE master;&#xA;GO&#xA;&#xA;ALTER DATABASE [munis_restore]&#xA;SET SINGLE_USER&#xA;WITH ROLLBACK IMMEDIATE;&#xA;GO&#xA;&#xA;RESTORE DATABASE [munis_restore]&#xA;From Disk='\\gissql\g$\mun_backup\restore\mun2849prod.bak'&#xA;&#xA;WITH REPLACE, RECOVERY,&#xA;MOVE 'mun2849prod' TO 'G:\SQL_Database\munis_restore.mdf',&#xA;MOVE 'mun2849prod_log' TO 'D:\SQL_LOGS\munis_restore.ldf';&#xA;&#xA;&#xA;&#xA;ALTER DATABASE [munis_restore] SET MULTI_USER;"
+          SQLTask:SqlStatementSource="&#xA;USE master;&#xA;GO&#xA;&#xA;ALTER DATABASE [munprod]&#xA;SET SINGLE_USER&#xA;WITH ROLLBACK IMMEDIATE;&#xA;GO&#xA;&#xA;RESTORE DATABASE [munprod]&#xA;From Disk='\\devsql\f$\mun_backup\restore\mun2849prod.bak'&#xA;&#xA;WITH REPLACE, RECOVERY,&#xA;MOVE 'mun2849prod' TO 'F:\munprod.mdf',&#xA;MOVE 'mun2849prod_log' TO 'E:\munprod_log.ldf';&#xA;&#xA;&#xA;&#xA;ALTER DATABASE [munprod] SET MULTI_USER;"
           SQLTask:ServerVersion="9"
           SQLTask:ExtendedLogging="True"
           SQLTask:LocalConnectionForLogging=""
