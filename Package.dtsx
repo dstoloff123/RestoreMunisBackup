@@ -11,19 +11,19 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{4F38E58F-2146-4B2B-ACB5-8B38EFBA9B49}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{FFF7734A-C1B2-490F-ABA8-313D1EB5956B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[munprod]"
-      DTS:CreationName="ADO.NET:SQL"
+      DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
       DTS:DTSID="{DD780CB5-A755-4142-B39A-C56444BFC8DB}"
       DTS:ObjectName="munprod">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=devsql;Initial Catalog=munprod;Integrated Security=True;Connect Timeout=30;Application Name=SSIS-Package-{DD780CB5-A755-4142-B39A-C56444BFC8DB}munprod;" />
+          DTS:ConnectionString="Data Source=devsql;Initial Catalog=munprod;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
